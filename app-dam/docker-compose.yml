@@ -48,6 +48,7 @@ services:
         volumes:
             -                    ./src/backend:/src/backend
             -                    ./src/frontend:/home/node/app/static
+            -                    /src/backend/node_modules
         networks:
             -                    app-fullstack-net
         depends_on:
