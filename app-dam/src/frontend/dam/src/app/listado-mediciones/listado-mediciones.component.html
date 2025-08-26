@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title *ngIf="dispositivo; else noDevice">Mediciones {{ dispositivo.nombre }}</ion-title>
+    <ng-template #noDevice>
+      <ion-title>No hay dispositivo seleccionado</ion-title>
+    </ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">listado-mediciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let m of mediciones" [style.--background]="m.valor | humedadRelativa">
+      <ion-label>
+        <h2>{{ m.fecha | date:'short' }}</h2>
+        <p [style.color]="(m.valor | humedadRelativa) | contraste">{{ m.valor }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
