@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>listado-dispositivos</ion-title>
+    <ion-title *ngIf="dispositivo; else noDevice">{{ dispositivo.nombre }}</ion-title>
+    <ng-template #noDevice>
+      <ion-title>No hay dispositivo seleccionado</ion-title>
+    </ng-template>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +13,32 @@
       <ion-title size="large">listado-dispositivos</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
 
-<!-- <ion-button (click)="subscribe()">Subscribe</ion-button>
-<ion-button (click)="unsubscribe()">Unsubscribe</ion-button> -->
+  <ion-list *ngIf="dispositivo">
+    <ion-item>
+      <ion-label>
+        <h2>Nombre: {{ dispositivo.nombre }}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Ubicación: {{ dispositivo.ubicacion }}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngIf="mediciones">
+      <ion-label>
+        <h2>{{ mediciones.fecha | date:'short' }}</h2>
+        <h2>{{ mediciones.valor }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-toggle *ngIf="electrovalvula" [checked]="electrovalvula.state" (ionChange)="tryToggleValve($event)">
+    Electrovalvula {{ electrovalvula.nombre }}
+  </ion-toggle>
+  <br />
+  <ion-button *ngIf="dispositivo" [routerLink]="['/listado-mediciones', dispositivo.dispositivoId]" color="primary" fill="solid" style="--color: black; text-transform: none;">
+    Historico mediciones
+  </ion-button>
+
+</ion-content>
