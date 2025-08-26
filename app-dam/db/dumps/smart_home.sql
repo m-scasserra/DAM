@@ -57,20 +57,21 @@ INSERT INTO `Dispositivos` (`dispositivoId`, `nombre`, `ubicacion`, `electrovalv
 
 CREATE TABLE `Electrovalvulas` (
   `electrovalvulaId` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL
+  `nombre` varchar(45) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Electrovalvulas`
 --
 
-INSERT INTO `Electrovalvulas` (`electrovalvulaId`, `nombre`) VALUES
-(1, 'eLPatio'),
-(2, 'eLCocina'),
-(3, 'eLJardinDelantero'),
-(4, 'eLLiving'),
-(5, 'eLHabitacion1'),
-(6, 'eLHabitacion2');
+INSERT INTO `Electrovalvulas` (`electrovalvulaId`, `nombre`, `estado`) VALUES
+(1, 'eLPatio', 1),
+(2, 'eLCocina', 0),
+(3, 'eLJardinDelantero', 1),
+(4, 'eLLiving', 0),
+(5, 'eLHabitacion1', 1),
+(6, 'eLHabitacion2', 0);
 
 -- --------------------------------------------------------
 
@@ -104,16 +105,16 @@ CREATE TABLE `Mediciones` (
 
 INSERT INTO `Mediciones` (`medicionId`, `fecha`, `valor`, `dispositivoId`) VALUES
 (1, '2020-11-26 21:19:41', '60', 1),
-(2, '2020-11-26 21:19:41', '40', 1),
-(3, '2020-11-26 21:19:41', '30', 2),
-(4, '2020-11-26 21:19:41', '50', 3),
-(5, '2020-11-26 21:19:41', '33', 5),
-(6, '2020-11-26 21:19:41', '17', 4),
-(7, '2020-11-26 21:19:41', '29', 6),
-(8, '2020-11-26 21:19:41', '20', 1),
-(9, '2020-11-26 21:19:41', '44', 4),
-(10, '2020-11-26 21:19:41', '61', 5),
-(11, '2020-11-26 21:19:41', '12', 2);
+(2, '2020-11-26 21:20:41', '40', 1),
+(3, '2020-11-26 21:21:41', '30', 2),
+(4, '2020-11-26 21:22:41', '50', 3),
+(5, '2020-11-26 21:23:41', '33', 5),
+(6, '2020-11-26 21:24:41', '17', 4),
+(7, '2020-11-26 21:25:41', '29', 6),
+(8, '2020-11-26 21:26:41', '20', 1),
+(9, '2020-11-26 21:27:41', '44', 4),
+(10, '2020-11-26 21:28:41', '61', 5),
+(11, '2020-11-26 21:29:41', '12', 2);
 
 --
 -- Índices para tablas volcadas
