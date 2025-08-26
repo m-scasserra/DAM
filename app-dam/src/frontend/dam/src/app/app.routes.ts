@@ -25,5 +25,10 @@ export const routes: Routes = [
     path: 'listado-dispositivos/:id',
     loadComponent: () => import('./listado-dispositivos/listado-dispositivos.page').then( m => m.ListadoDispositivosPage),
     canActivate: [authGuard]
+  },
+  {
+    path: 'listado-mediciones/:id',
+    loadComponent: () => import('./listado-mediciones/listado-mediciones.component').then( m => m.ListadoMedicionesComponent),
+    canActivate: [authGuard]
   }
 ];
